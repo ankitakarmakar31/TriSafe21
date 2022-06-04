@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "947648978857",
+    "project_id": "trisafe21",
+    "storage_bucket": "trisafe21.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947648978857:android:a5284394d1689e44db2eb8",
+        "android_client_info": {
+          "package_name": "com.example.down_syndrome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "947648978857-37nfn8ga1006let2j7ss4uknlo9hjlp4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBLo5Vd7dbWXSM0ojYRCzAjDyF78j3EII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "947648978857-37nfn8ga1006let2j7ss4uknlo9hjlp4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
