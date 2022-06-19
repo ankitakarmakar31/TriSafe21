@@ -1,5 +1,3 @@
-
-import 'dart:html';
 import 'dart:ui';
 
 import 'package:down_syndrome/Screens/DashBoard.dart';
@@ -7,7 +5,6 @@ import 'package:down_syndrome/Screens/SignUpPage.dart';
 import 'package:down_syndrome/ServicesfromFirebase/auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
 
 class LoginUiPage extends StatefulWidget {
   const LoginUiPage({Key? key}) : super(key: key);
@@ -17,7 +14,6 @@ class LoginUiPage extends StatefulWidget {
 }
 
 class _LoginUiPageState extends State<LoginUiPage> {
-
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
@@ -70,7 +66,7 @@ class _LoginUiPageState extends State<LoginUiPage> {
                         ? "Enter a valid Email"
                         : null,
                     onChanged: (val) {
-                      setState ( () => email = val);
+                      setState(() => email = val);
                     },
                   ),
                   const SizedBox(
@@ -85,9 +81,10 @@ class _LoginUiPageState extends State<LoginUiPage> {
                           Icons.edit,
                           color: Color(0xfff97d7d),
                         )),
-                    validator: (val) => val!.length<8 ? 'Enter the correct Password' : null,
+                    validator: (val) =>
+                        val!.length < 8 ? 'Enter the correct Password' : null,
                     onChanged: (val) {
-                      setState ( () => password = val);
+                      setState(() => password = val);
                     },
                   ),
                   const SizedBox(
@@ -105,29 +102,32 @@ class _LoginUiPageState extends State<LoginUiPage> {
                         style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                       onPressed: () async {
+                        // print("sign in clicked ${}");
                         if (_formKey.currentState!.validate()) {
                           dynamic result = await _auth
                               .signInWithEmailAndPassword(email, password);
+                          print("sign in result=${result}");
+
                           if (result == null) {
-                            setState(() =>
-                            error = 'could not sign in with those credentials');
+                            setState(() => error =
+                                'could not sign in with those credentials');
+                          } else {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const DashBoard()),
+                            );
                           }
                         }
-                           Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const DashBoard()),
-                          );
                       },
-
                     ),
                   ),
                   SizedBox(
                       height: 30,
                       child: Text(
                         error,
-                        style: const TextStyle(color : Colors.red, fontSize : 14),
-                      )
-                  ),
+                        style: const TextStyle(color: Colors.red, fontSize: 14),
+                      )),
                   const SizedBox(
                     height: 30,
                   ),
@@ -138,27 +138,27 @@ class _LoginUiPageState extends State<LoginUiPage> {
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.w700,
-                            fontSize: 13
-                        ),
+                            fontSize: 13),
                       ),
                       TextSpan(
                         text: 'Register',
-                        recognizer: TapGestureRecognizer()..onTap = () {
-                          Navigator.push(
-                            context,
-                            PageRouteBuilder(
-                              pageBuilder: (c, a1, a2) => const SignUpPage(),
-
-                              transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
-                              transitionDuration: const Duration(milliseconds: 1000),
-                            ),
-                          );
-                        },
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder: (c, a1, a2) => const SignUpPage(),
+                                transitionsBuilder: (c, anim, a2, child) =>
+                                    FadeTransition(opacity: anim, child: child),
+                                transitionDuration:
+                                    const Duration(milliseconds: 1000),
+                              ),
+                            );
+                          },
                         style: const TextStyle(
                             color: Color(0xffee0f37),
                             fontWeight: FontWeight.w700,
-                            fontSize: 16
-                        ),
+                            fontSize: 16),
                       ),
                     ]),
                   ),

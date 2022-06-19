@@ -26,15 +26,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<MyUser?>.value(
-      catchError: (_, __) => null,
-      value: AuthService().user,
-      initialData: null,
-      child: const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
-      ),
+    return
+        //  StreamProvider<MyUser?>.value(
+        //   catchError: (_, __) => null,
+        //   value: AuthService().user,
+        //   initialData: null,
+        //   child: const
+
+        MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(),
     );
+
+    // );
   }
 }
 
@@ -49,14 +53,15 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3),
-            ()=>Navigator.pushReplacement(context,
-            MaterialPageRoute(builder:
-                (context) => Wrapper(),
-            )
-        )
-    );
+    Timer(
+        Duration(seconds: 3),
+        () => Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Wrapper(),
+            )));
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +70,11 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('Assets/TriSafe21_logo.jpg',width: 200, height: 200,),
+            Image.asset(
+              'Assets/TriSafe21_logo.jpg',
+              width: 200,
+              height: 200,
+            ),
             const CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
             )
@@ -75,4 +84,3 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
-
